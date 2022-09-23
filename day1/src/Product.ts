@@ -6,11 +6,10 @@ export default class Product {
   ) {
     this.validadeDescription();
     this.validadeQuantity();
-    this.validadePrice;
+    this.validadePrice();
   }
   validadeQuantity() {
-    if (this.quantity < 0)
-      throw Error('Invalid quantity')
+    if (this.quantity < 0) throw Error('Invalid quantity')
   }
   validadePrice() {
     if (this.price < 0) throw Error('Invalid price')
