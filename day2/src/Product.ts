@@ -5,7 +5,7 @@ export default class Product {
     readonly id: number,
     readonly description: string,
     readonly price: number,
-    readonly dimensions: number[],
+    readonly dimensions: Dimensions,
     readonly weigh: number
   ) {
     this.validate()
@@ -13,8 +13,10 @@ export default class Product {
   validate(){
     this.validadeDescription();
     this.validadePrice();
-    this.validateDimensions()
-    this.validateWeigh()
+    this.validateWeigh();
+  }
+  get density(){
+    return this.weigh / this.dimensions.volume
   }
   validadePrice() {
     if (this.price <= 0) throw Error('Invalid price')
@@ -22,10 +24,7 @@ export default class Product {
   validadeDescription() {
     if (!this.description) throw Error('Invalid description')
   }
-  validateDimensions() {
-    const someDimensionInvalid = this.dimensions.some(dimension => dimension <= 0);
-    if (someDimensionInvalid) throw Error('Invalid dimensions');
-  }
+
   validateWeigh() {
     if (this.weigh <= 0) throw Error('Invalid weigh')
   }

@@ -7,6 +7,7 @@ export default class Order {
   orderProducts: OrderProduct[] = [];
   cpf: Cpf
   coupon?: Coupon
+
   constructor(cpf: string) {
     this.cpf = new Cpf(cpf);
   }
@@ -18,8 +19,8 @@ export default class Order {
     if (this.coupon) return this.subtotal - (this.subtotal * this.coupon.discount);
     return this.subtotal;
   }
-  get deliveryPrice(){
-    return 
+  async calculateDeliveryPrice(){
+    return this.orderProducts.map
   }
   productExistsInOrder(product: Product){
     return this.orderProducts.some(orderProduct => orderProduct.productId === product.id);

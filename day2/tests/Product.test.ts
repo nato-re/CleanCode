@@ -1,5 +1,6 @@
+import Dimensions from "../src/Dimensions";
 import Product from "../src/Product"
-const validDimensions = [1,1,1];
+const validDimensions = new Dimensions(1,1,1);
 const validWeigh = 10;
 test('create product with invalid description', function(){
   expect(() => new Product(1, '', 1, validDimensions, validWeigh)).toThrowError('Invalid description')
@@ -14,5 +15,5 @@ test('create product with invalid weigh', function(){
 })
 
 test('create product with invalid dimensions', function(){
-  expect(() => new Product(1, 'asd', 1, [-1], 0)).toThrowError('Invalid dimensions')
+  expect(() => new Dimensions(0,0,-1)).toThrowError('Invalid Dimension')
 })

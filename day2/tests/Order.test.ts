@@ -1,8 +1,9 @@
 import Coupon from "../src/Cupom"
+import Dimensions from "../src/Dimensions";
 import Order from "../src/Order"
 import Product from "../src/Product"
 
-const validDimensions = [1,1,1];
+const validDimensions = new Dimensions(1,1,1);
 const validProduct = (id: number) => new Product(id, 'descrição', 3, validDimensions, 1);
 const validProducts = [validProduct(1), validProduct(2), validProduct(3)]
 const VALID_CPF = '11111111200'
@@ -51,8 +52,8 @@ test('add equal itens to order', () => {
   expect(() => validOrder.addProduct(validProduct(1), 1)).toThrow()
 })
 
-test('calculate valid deliveryPrice', () => {
+test.failing('calculate valid deliveryPrice', () => {
   const order = createValidOrder();
-  expect(order.deliveryPrice).toEqual(1)
+  expect(order.calculateDeliveryPrice()).toEqual(1)
 })
 

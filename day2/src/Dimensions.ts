@@ -10,4 +10,8 @@ export default class Dimensions {
     const someDimensionInvalid = [this.x, this.y, this.z].some(dimension => dimension < 0);
     if (someDimensionInvalid) throw Error('Invalid Dimension');
   }
+
+  get volume(){
+    return this.x * this.y * this.z;
+  }
 }
