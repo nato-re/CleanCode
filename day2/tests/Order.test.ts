@@ -23,21 +23,21 @@ test('should return false when cpf is null', () => {
 test('calculate order subtotal', () => {
   const order = createValidOrder();
 
-  expect(order.subtotal).toBe(3)
+  expect(order.subtotal).toBe(9)
 })
 
 test('calculate order price', () => {
   const order = createValidOrder();
   const coupon = new Coupon('VALID', 0.1, new Date(new Date().getTime() + 10000))
   order.addCoupon(coupon)
-  expect(order.total).toBe(2.7)
+  expect(order.total).toBe(8.1)
 })
 
 test('calculate order price with invalid coupon', () => {
   const order = createValidOrder();
   const coupon = new Coupon('VALID', 0.1, new Date(new Date().getTime() - 1000))
   order.addCoupon(coupon)
-  expect(order.total).toBe(3)
+  expect(order.total).toBe(9)
 })
 
 test('add product with invalid quantity', () => {
@@ -50,10 +50,5 @@ test('add equal itens to order', () => {
   const validOrder = new Order(VALID_CPF);
   validOrder.addProduct(validProduct(1), 1)
   expect(() => validOrder.addProduct(validProduct(1), 1)).toThrow()
-})
-
-test.failing('calculate valid deliveryPrice', () => {
-  const order = createValidOrder();
-  expect(order.calculateDeliveryPrice()).toEqual(1)
 })
 

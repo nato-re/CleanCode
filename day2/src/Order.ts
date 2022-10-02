@@ -12,16 +12,14 @@ export default class Order {
     this.cpf = new Cpf(cpf);
   }
   get subtotal(): number {
-    const value = this.orderProducts.reduce((prev, acc) => acc.price + prev, 0);
+    const value = this.orderProducts.reduce((prev, acc) => acc.total + prev, 0);
     return value;
   }
   get total() {
     if (this.coupon) return this.subtotal - (this.subtotal * this.coupon.discount);
     return this.subtotal;
   }
-  async calculateDeliveryPrice(){
-    return this.orderProducts.map
-  }
+
   productExistsInOrder(product: Product){
     return this.orderProducts.some(orderProduct => orderProduct.productId === product.id);
   }

@@ -1,9 +1,9 @@
-export const couponService = {
-  getCoupon: function (code: string) {
-    if (code === 'VALID') return;
-    throw new Error("Invalid Coupon");
-  }
-}
+// export const couponService = {
+//   getCoupon: function (code: string) {
+//     if (code === 'VALID') return;
+//     throw new Error("Invalid Coupon");
+//   }
+// }
 
 export default class Coupon {
   constructor(

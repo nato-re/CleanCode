@@ -10,22 +10,26 @@ export default class Product {
   ) {
     this.validate()
   }
-  validate(){
+  get density(){
+    return this.weigh / this.dimensions.volume
+  }
+  get volume (){
+    return this.dimensions.volume
+  }
+  private validate(){
     this.validadeDescription();
     this.validadePrice();
     this.validateWeigh();
   }
-  get density(){
-    return this.weigh / this.dimensions.volume
-  }
-  validadePrice() {
+  private validadePrice() {
     if (this.price <= 0) throw Error('Invalid price')
   }
-  validadeDescription() {
+  private validadeDescription() {
     if (!this.description) throw Error('Invalid description')
   }
-
-  validateWeigh() {
+  private validateWeigh() {
     if (this.weigh <= 0) throw Error('Invalid weigh')
   }
 }
+
+// new Product(1,'asd', 1, new Dimensions(1,2,3), 1)

@@ -1,12 +1,20 @@
+import Product from "./Product";
+
+const DEFAULT_DISTANCE_IN_KM = 1000;
+
 export default class Delivery {
+  readonly MIN_FEE = 10;
   constructor(
-    readonly distance: number,
-    readonly volume: number,
-    readonly density: number
-  ) {
-  }
-  get price(){
-    const total = this.distance * this.volume * (this.density/100)
-    return total > 10 ? total : 10;
+    readonly products: Product[],
+    readonly distance: number = DEFAULT_DISTANCE_IN_KM,
+  ) {}
+  get price() {
+    const total = this.products.reduce(
+      (total, product) =>
+        total + this.distance * product.volume * (product.density / 100)
+      , 0
+    )
+    return Number
+    ((total > this.MIN_FEE ? total : this.MIN_FEE).toFixed(2));
   }
 }

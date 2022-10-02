@@ -19,5 +19,4 @@ export default class OrderProduct {
   validadePrice() {
     if (this.price < 0) throw Error('Invalid price')
   }
-
 }
