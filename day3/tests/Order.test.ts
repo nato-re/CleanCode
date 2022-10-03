@@ -1,7 +1,7 @@
-import Coupon from "../src/Cupom"
-import Dimensions from "../src/Dimensions";
-import Order from "../src/Order"
-import Product from "../src/Product"
+import Coupon from "../src/domain/entity/Cupom"
+import Dimensions from "../src/domain/entity/Dimensions";
+import Order from "../src/domain/entity/Order"
+import Product from "../src/domain/entity/Product"
 
 const validDimensions = new Dimensions(1,1,1);
 const validProduct = (id: number) => new Product(id, 'descrição', 3, validDimensions, 1);

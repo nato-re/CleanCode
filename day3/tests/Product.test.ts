@@ -1,5 +1,5 @@
-import Dimensions from "../src/Dimensions";
-import Product from "../src/Product"
+import Dimensions from "../src/domain/entity/Dimensions";
+import Product from "../src/domain/entity/Product"
 const validDimensions = new Dimensions(1,1,1);
 const validWeigh = 10;
 test('create product with invalid description', function(){

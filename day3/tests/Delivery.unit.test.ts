@@ -1,6 +1,6 @@
-import Delivery from "../src/Delivery";
-import Dimensions from "../src/Dimensions";
-import Product from "../src/Product";
+import Delivery from "../src/domain/entity/Delivery";
+import Dimensions from "../src/domain/entity/Dimensions";
+import Product from "../src/domain/entity/Product";
 
 test('Create valid delivery', function(){
   const product = new Product(1, 'descrição', 3, new Dimensions(1,2,3), 1);
@@ -16,3 +16,4 @@ test('Create valid delivery', function(){
 
   expect(delivery.price).toBe(1000);
 })
+

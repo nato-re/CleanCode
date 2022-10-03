@@ -2,6 +2,7 @@ import Product from "./Product";
 import Cpf from "./Cpf";
 import Coupon from "./Cupom";
 import OrderProduct from "./OrderProduct";
+import OrderCode from "./OrderCode";
 
 export default class Order {
   orderProducts: OrderProduct[] = [];
@@ -30,5 +31,8 @@ export default class Order {
   }
   addCoupon(coupon: Coupon) {
     this.coupon = coupon;
+  }
+  createCode(id: number){
+    return new OrderCode(id).value
   }
 }

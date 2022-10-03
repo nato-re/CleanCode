@@ -1,13 +1,17 @@
-import ProductRepository from "../database/ProductRepository.interface";
-import Delivery from "../Delivery";
-import Product from "../Product";
+import ProductRepository from "../domain/repository/ProductRepository.interface";
+import Delivery from "../domain/entity/Delivery";
+import Product from "../domain/entity/Product";
 
 export default class DeliveryFee {
-
   constructor(
     readonly productRepository: ProductRepository,
   ) { }
-  async execute(input: Input): Promise<number> {
+  async execute(
+    input: {
+      distance: number
+      orderProducts: { productId: number, quantity: number }[]
+    }
+  ): Promise<number> {
     const products = await Promise.all(
       input.orderProducts.map(
         async ({ productId }) => {
@@ -18,8 +22,4 @@ export default class DeliveryFee {
       const delivery = new Delivery(products, input.distance)
       return delivery.price;
   }
-}
-type Input = {
-  distance: number
-  orderProducts: { productId: number, quantity: number }[]
-}
+};
