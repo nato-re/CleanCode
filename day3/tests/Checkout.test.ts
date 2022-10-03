@@ -1,12 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import ExpressAdapter from '../src/infra/http/ExpressAdapter';
-
-import DeliveryFee from '../src/application/DeliveryFee';
-import Preview from '../src/application/Preview';
-import Coupon from '../src/domain/entity/Cupom';
-import PreviewController from '../src/infra/controllers/PreviewController';
-import CouponRepositoryMemory from '../src/infra/database/CouponRepositoryMemory';
 import ProductRepositoryMemory from '../src/infra/database/ProductRepositoryMemory';
 import CheckoutController from '../src/infra/controllers/CheckoutController';
 import Checkout from '../src/application/Checkout';
